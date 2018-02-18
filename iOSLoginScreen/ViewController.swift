@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor(red: 80/255, green: 220/255, blue: 100/255, alpha: 1)
+        view.backgroundColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
         
         setupContraints()
     }
@@ -21,26 +21,28 @@ class ViewController: UIViewController {
     let emailTextField: UITextField = {
        let tf = UITextField()
         tf.placeholder = "Type email here"
-        tf.textColor = .black
+        tf.textColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.layer.cornerRadius = 5
+        tf.layer.cornerRadius = 30 / 2
+        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.isSecureTextEntry = true
-        tf.placeholder = "Type password here"
-        tf.textColor = .black
+        tf.placeholder = "  Type password here"
+        tf.textColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.layer.cornerRadius = 5
+        tf.layer.cornerRadius = 30 / 2
+        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
         return tf
     }()
     
     let logoLabel: UILabel = {
        let lbl = UILabel()
         lbl.text = "emerald"
-        lbl.textColor = UIColor(red: 13/255, green: 255/255, blue: 179/255, alpha: 1)
+        lbl.textColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont(name: "Helvetica", size: 32.0)
@@ -49,22 +51,30 @@ class ViewController: UIViewController {
     
     let singInButton: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor(red: 13/255, green: 255/255, blue: 179/255, alpha: 1)
+        btn.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
+        btn.setTitleColor(UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1) , for: .normal)
         btn.setTitle("Sing In", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.cornerRadius = 5
+        btn.addTarget(self, action: #selector(afterLoginFunc), for: .touchUpInside)
         return btn
     }()
     
     let orLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "or"
-        lbl.textColor = UIColor(red: 13/255, green: 255/255, blue: 179/255, alpha: 1)
+        lbl.textColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont(name: "Helvetica", size: 22.0)
         return lbl
     }()
+    
+    @objc func afterLoginFunc() {
+        
+        present(AfterLoginScreen(), animated: true, completion: nil)
+        print("tesgdsf")
+    }
     
     func setupContraints() {
         view.addSubview(emailTextField)
@@ -80,13 +90,13 @@ class ViewController: UIViewController {
         logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -55).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -80).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 100).isActive = true
         
         
-        passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -55).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -80).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 25).isActive = true
