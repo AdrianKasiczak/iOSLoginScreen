@@ -13,36 +13,41 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
+    
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background.png")!)
         
         setupContraints()
+        
     }
 
     let emailTextField: UITextField = {
        let tf = UITextField()
         tf.placeholder = "Type email here"
-        tf.textColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
+        tf.textColor = .white
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.layer.cornerRadius = 30 / 2
-        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
+        tf.borderStyle = .bezel
+        tf.layer.borderColor = UIColor.white.cgColor
+        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 0)
+        tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.isSecureTextEntry = true
-        tf.placeholder = "  Type password here"
-        tf.textColor = UIColor(red: 56/255, green: 54/255, blue: 154/255, alpha: 1)
+        tf.placeholder = "Type password here"
+        tf.textColor = .white
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.layer.cornerRadius = 30 / 2
-        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
+        tf.borderStyle = .bezel
+        tf.backgroundColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 0)
         return tf
     }()
     
     let logoLabel: UILabel = {
        let lbl = UILabel()
-        lbl.text = "emerald"
-        lbl.textColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
+        lbl.text = "iOS Login Screen"
+        lbl.textColor = .white
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont(name: "Helvetica", size: 32.0)
@@ -63,11 +68,30 @@ class ViewController: UIViewController {
     let orLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "or"
-        lbl.textColor = UIColor(red: 143/255, green: 227/255, blue: 136/255, alpha: 1)
+        lbl.textColor = .white
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont(name: "Helvetica", size: 22.0)
         return lbl
+    }()
+    
+    
+    let facebookButton: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
+        btn.setTitle("Connect Facebook", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    
+    let twitterButton: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = UIColor(red: 29/255, green: 202/255, blue: 255/255, alpha: 1)
+        btn.setTitle("Connect Twitter", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 5
+        return btn
     }()
     
     @objc func afterLoginFunc() {
@@ -82,12 +106,14 @@ class ViewController: UIViewController {
         view.addSubview(logoLabel)
         view.addSubview(singInButton)
         view.addSubview(orLabel)
+        view.addSubview(facebookButton)
+        view.addSubview(twitterButton)
         
         
         
         logoLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -55).isActive = true
         logoLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
         logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -80).isActive = true
@@ -112,6 +138,18 @@ class ViewController: UIViewController {
         orLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         orLabel.topAnchor.constraint(equalTo: singInButton.bottomAnchor, constant: 35).isActive = true
+        
+        
+        facebookButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        facebookButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 10).isActive = true
+        
+        
+        twitterButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
+        twitterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        twitterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        twitterButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 10).isActive = true
         
     }
 
